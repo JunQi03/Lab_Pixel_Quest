@@ -10,26 +10,22 @@ public class GeoControllers : MonoBehaviour
 {
     string String = "Hello";
     int var = 3;
-    public string nextlevel = "Scene_2";
+    public string nextlevel = "Scene_1";
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        //Debug.Log("Run Killer");
-        switch (collision.tag)
+        switch (other.gameObject.tag)
         {
             case "Death":
                 {
                     Debug.Log("Player has died");
-                }
 
-
-                {
                     string thislevel = SceneManager.GetActiveScene().name;
                     SceneManager.LoadScene(thislevel);
-                   
-                    break;
 
+                    break;
                 }
+
             case "Finish":
                 {
                     SceneManager.LoadScene(nextlevel);
@@ -43,12 +39,13 @@ public class GeoControllers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        rb = GetComponent<Rigidbody2D>();
         
+        rb = GetComponent<Rigidbody2D>();
+        /*
         Debug.Log("Hello World");
         string Stringtwo = "World";
         Debug.Log(String + Stringtwo);
+        */
     }
 
     // Update is called once per frame
@@ -56,7 +53,7 @@ public class GeoControllers : MonoBehaviour
     {
         float xInput = Input.GetAxis("Horizontal");
         //Debug.Log(xInput);
-        rb. velocity = new Vector2 (xInput * speed, rb.velocity.y);
+        rb.velocity = new Vector2 (xInput * speed, rb.velocity.y);
 
         /*
 
