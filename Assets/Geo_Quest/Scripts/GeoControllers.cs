@@ -21,6 +21,8 @@ public class GeoControllers : MonoBehaviour
                 {
                     Debug.Log("Player has died");
                 }
+
+
                 {
                     string thislevel = SceneManager.GetActiveScene().name;
                     SceneManager.LoadScene(thislevel);
